@@ -2,8 +2,11 @@ FROM python:3.9-alpine3.14
 
 RUN set -xe; \
     apk add \
-      font-go-mono-nerd-2.1.0-r6 \
+      ttf-freefont \
       g++ \
+      libnl3 \
+      libnl3-dev \
+      linux-headers \
       make \
       ; \
     pip install \
@@ -11,7 +14,7 @@ RUN set -xe; \
       Adafruit-SSD1306 \
       adafruit-circuitpython-busdevice \
       adafruit-circuitpython-framebuf \
-      ethtool \
+      psutil \
       rpi-gpio \
       ;
 
