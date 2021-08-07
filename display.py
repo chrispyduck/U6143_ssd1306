@@ -25,9 +25,9 @@ image = Image.new("1", (width, height))
 draw = ImageDraw.Draw(image)
 draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
-font = ImageFont.truetype("/usr/share/fonts/opentype/courier-prime/Courier Prime Sans.otf", 16)
-font_big = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
-font_small = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 10)
+font = ImageFont.truetype("/usr/share/fonts/TTF/FreeMono.ttf", 16)
+font_big = ImageFont.truetype("/usr/share/fonts/TTF/FreeMono.ttf", 30)
+font_small = ImageFont.truetype("/usr/share/fonts/TTF/FreeMono.ttf", 10)
 
 # display adjustment
 padding = -2
