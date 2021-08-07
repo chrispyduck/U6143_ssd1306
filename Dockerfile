@@ -11,6 +11,7 @@ RUN set -xe; \
       Adafruit-SSD1306 \
       adafruit-circuitpython-busdevice \
       adafruit-circuitpython-framebuf \
+      Pillow \
       psutil \
       rpi-gpio \
       ;
