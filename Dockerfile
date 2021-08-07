@@ -12,6 +12,7 @@ RUN set -xe; \
       adafruit-circuitpython-busdevice \
       adafruit-circuitpython-framebuf \
       ethtool \
+      rpi-gpio \
       ;
 
 ADD display.py /display.py
