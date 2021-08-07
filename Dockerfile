@@ -1,12 +1,9 @@
-FROM python:3.9-alpine3.14
+FROM python:buster
 
 RUN set -xe; \
-    apk add \
-      ttf-freefont \
+    apt-get update; \
+    apt-get install -y \
       g++ \
-      libnl3 \
-      libnl3-dev \
-      linux-headers \
       make \
       ; \
     pip install \
