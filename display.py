@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 import math
 import time
 import subprocess
@@ -7,13 +9,12 @@ import sys
 from board import SCL, SDA
 import busio
 from PIL import Image, ImageDraw, ImageFont
-import adafruit_ssd1306
+import Adafruit_SSD1306
 
 i2c = busio.I2C(SCL, SDA)
-disp = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
+disp = Adafruit_SSD1306.SSD1306_128_32(14)
 
-disp.fill(0)
-disp.show()
+disp.display()
 
 # Create blank image for drawing.
 # Make sure to create image with mode '1' for 1-bit color.
@@ -25,9 +26,9 @@ image = Image.new("1", (width, height))
 draw = ImageDraw.Draw(image)
 draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
-font = ImageFont.truetype("/usr/share/fonts/TTF/FreeMono.ttf", 16)
-font_big = ImageFont.truetype("/usr/share/fonts/TTF/FreeMono.ttf", 30)
-font_small = ImageFont.truetype("/usr/share/fonts/TTF/FreeMono.ttf", 10)
+font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", 16)
+font_big = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", 30)
+font_small = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", 10)
 
 # display adjustment
 padding = -2
@@ -75,9 +76,9 @@ while True:
 
   # determine which function to execute for the stat display
   t = time.time()
-  loop = math.floor((t % loop_time) % loop_divisor)
-  sys.stdout.write(f'loop: {t % loop_time} % {loop_divisor} = {loop}\n')
-  sys.stdout.flush()
+  loop = math.floor((t % loop_time) / loop_divisor)
+  #sys.stdout.write(f'loop: {t % loop_time} / {loop_divisor} = {loop}\n')
+  #sys.stdout.flush()
   fn = loop_config.get(loop, print_cpu)
 
   # execute it to render the stat image
@@ -85,7 +86,7 @@ while True:
 
   # display the computed image
   disp.image(image)
-  disp.show()
+  disp.display()
   time.sleep(0.5)
 
 

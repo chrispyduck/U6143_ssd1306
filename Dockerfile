@@ -11,7 +11,7 @@ RUN set -xe; \
       ; \
     pip install \
       Adafruit-Blinka \
-      Adafruit-SSD1306 \
+      adafruit_ssd1306 \
       adafruit-circuitpython-busdevice \
       adafruit-circuitpython-framebuf \
       psutil \
