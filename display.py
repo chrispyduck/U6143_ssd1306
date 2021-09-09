@@ -1,5 +1,6 @@
 #!/usr/bin/env python3 
 
+import atexit
 import math
 import time
 import subprocess
@@ -11,11 +12,24 @@ import busio
 from PIL import Image, ImageDraw, ImageFont
 import Adafruit_SSD1306
 
+sys.stdout.write('Initializing I2C bus...\n')
 i2c = busio.I2C(SCL, SDA)
+
+sys.stdout.write('Initializing display...\n')
 disp = Adafruit_SSD1306.SSD1306_128_32(14)
+disp.begin()
 
-disp.display()
+def reset():
+  disp.clear()
+  disp.reset()
+  disp.display()
 
+# make sure the display is cleared when this script exits
+atexit.register(reset)
+
+reset()
+
+sys.stdout.write('Loading fonts...\n')
 # Create blank image for drawing.
 # Make sure to create image with mode '1' for 1-bit color.
 width = disp.width
@@ -89,4 +103,4 @@ while True:
   disp.display()
   time.sleep(0.5)
 
-
+sys.stdout.write('Exited\n')
